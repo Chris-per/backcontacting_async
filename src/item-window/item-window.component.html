@@ -1,0 +1,19 @@
+<div class ="reihe" >
+    <p>{{item_list.description}}
+    <div class="box-element">
+        @for (item of item_list.items; track item.id)
+        {
+        <div>
+            <div class="item-element">
+                <span>ID: {{item.id}} </span>
+                <span>X: {{item.position.x.toFixed(1)}} </span>
+                <span>Y: {{item.position.y.toFixed(1)}} </span>
+                <button  class="delete-button" (click)="send_delete(item_list.type, item.id)" class="delete-button">
+                    del
+                </button>
+            </div>
+            
+        </div>
+        }
+    </div>
+</div>

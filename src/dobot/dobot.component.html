@@ -1,0 +1,29 @@
+
+<div class="spalte">
+    <div class="reihe">
+        <div class="position-box-element">
+            <p class="pos">Dobot Data</p>
+            <p class="pos">x:{{dobot_status.x}}</p>
+            <p class="pos">y:{{dobot_status.y}} </p> 
+            <p class="pos">z:{{dobot_status.z}} </p>
+            <p class="pos">a:{{dobot_status.a}}</p>
+        </div>
+    </div>
+    
+    <div class="reihe">
+        <app-actions></app-actions>
+    </div>
+    <div class="reihe">
+        <app-dobot-move></app-dobot-move>
+    </div>
+</div>
+<div class="spalte">
+    <app-video></app-video>
+    <app-dobot-canvas></app-dobot-canvas>
+    <div class = "reihe">
+        <app-item-window [item_list]='this.status.pcb_list'></app-item-window>
+        <app-item-window [item_list]='this.status.window_list'></app-item-window>
+    </div>
+    
+</div>
+

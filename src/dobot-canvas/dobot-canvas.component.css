@@ -1,0 +1,16 @@
+.video-screen{
+    padding: 5px;
+    width: 480px;
+}
+
+.canvas-box-element {
+    width: 500px;
+    height: 540px;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.12),
+    0px 1px 2px 0px rgba(0,0,0,0.24);
+    overflow: auto;
+    
+  }

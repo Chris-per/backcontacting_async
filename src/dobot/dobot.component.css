@@ -1,0 +1,27 @@
+/* .spalte {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.reihe {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.pos {
+    margin-top: 0px;
+} */
+
+.position-box-element {
+    width: 150px;
+    height: 230px;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.12),
+    0px 1px 2px 0px rgba(0,0,0,0.24);
+    overflow: auto;
+    
+  }

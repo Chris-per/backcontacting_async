@@ -1,0 +1,66 @@
+<div class="move-box-element">
+  <div class="container">
+    <div>1</div>
+    <div>
+      <button class="move-button"
+        mat-raised-button color="primary" 
+        (mousedown)="move_jog('Y','+')"
+        (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_upward" style="align-items: center;"></mat-icon>
+      </button>
+    </div>
+    <div>2</div>  
+    <button class="move-button"
+      mat-raised-button color="primary"
+      (mousedown)="move_jog('Z','+')"
+      (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_upward" style="align-items:center;"></mat-icon>
+      </button> 
+      <div>
+        <button class="move-button"
+        mat-raised-button color="primary" 
+        (mousedown)="move_jog('X','-')"
+        (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_back" style="align-items: center;"></mat-icon>
+      </button>
+      </div>
+      <div>XY</div>
+    <button class="move-button"
+      mat-raised-button color="primary"
+      (mousedown)="move_jog('X','+')"
+      (mouseup)="stop_jog()" >
+              <mat-icon aria-hidden="false" fontIcon="arrow_forward" style="align-items: center;"></mat-icon>
+      </button>
+    <div>Z</div>
+    <div></div>
+    <button class="move-button"
+      mat-raised-button color="primary" 
+      (mousedown)="move_jog('Y','-')"
+      (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_downward" style="align-items: center;"></mat-icon>
+      </button>
+    <div></div>
+    <div>
+      <button class="move-button"
+      mat-raised-button color="primary" 
+      (mousedown)="move_jog('Z','-')"
+      (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_downward" style="align-items: center;"></mat-icon>
+      </button>
+    </div>
+    <div>
+      <button class="move-button"
+      mat-raised-button color="primary"
+      (mousedown)="move_jog('R','-')"
+      (mouseup)="stop_jog()" >
+              <mat-icon aria-hidden="false" fontIcon="arrow_back" style="align-items:center;"></mat-icon>
+      </button><div></div></div>
+    <div><p style="text-align: center;">J4</p></div>
+    <div><button class="move-button"
+      mat-raised-button color="primary" 
+      (mousedown)="move_jog('R','+')"
+      (mouseup)="stop_jog()">
+              <mat-icon aria-hidden="false" fontIcon="arrow_forward" style="align-items: center;"></mat-icon>
+      </button></div>
+  </div>
+</div>

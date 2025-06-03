@@ -1,0 +1,85 @@
+{
+    "POSITION_BOTTOM_UP":
+    {
+        "COMMENT":"coordinates seen from Bottom Up cam",
+        "HEATER":
+        {
+            "X":-10,
+            "Y":41,
+            "Z":104
+        },
+        "GRIPPER":
+        {
+            "X":0,
+            "Y":0,
+            "Z":0 
+        },
+        "CAM":
+        {
+            "X":-50,
+            "Y":10,
+            "Z":47,
+            "FOCUS_HEIGHT": 50
+        }
+    },
+    "OFFSET":
+    {
+        "CAM_TO_GRIPPER":
+        {
+            "R":10,
+            "PHI": 2.0
+        },
+        "HEATER_TO_GRIPPER":
+        {
+            "R":10,
+            "PHI": 2.0
+        }
+    },
+    "POSITION_MOBILE":
+    {
+        "COMMENT":"coordinates seen from mobile cam",
+        "DISPENSER_CAM":
+        {
+            "X":128,
+            "Y":225,
+            "Z":40
+        },
+        "DISPENSER":
+        {
+            "X":60,
+            "Y":244,
+            "Z":20 
+        }
+    },
+    "UEYE":
+    {
+        "PX_PER_MM_X": 0.056,
+        "PX_PER_MM_Y": 0.056
+    },
+    "CANVAS":
+    {
+        "TEXT_OFFSET_LEFT_PX" : 40, 
+        "TEXT_OFFSET_RIGHT_PX" : 20,
+        "TEXT_OFFSET_BOTTOM_PX" : 40,
+        "TEXT_OFFSET_TOP_PX" : 20,
+        "GRID_INTERVAL" : 50
+    },
+    "POSITIONS":
+    {
+        "PICKUP_AREA":
+        {
+            "X1": 20,
+            "Y1": 250,
+            "X2": 40,
+            "Y2": 280
+        },
+        "MODULE_AREA":
+        {
+            "X1": 200,
+            "Y1": 200,
+            "X2": 340,
+            "Y2": 300
+        }
+    }
+
+}

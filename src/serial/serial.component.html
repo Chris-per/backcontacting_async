@@ -1,0 +1,85 @@
+<div class="reihe">
+    <div class="spalte">
+        <mat-label class="descriptor">Heater</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('HEATER_ON')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('HEATER_ON')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.heater_on.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Temperature Setpoint</mat-label>
+            <input matInput type="text" [(ngModel)]="curing_temp_sp">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_number_value('CURING_TIME_SP', curing_time_sp)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Temperature </mat-label>
+            <input matInput type="text" [(ngModel)]="curing_temp_sp">      
+        </mat-form-field>
+    </div>
+    <div class="spalte">
+        <mat-label class="descriptor">PISTON</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('PISTON_POS')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('PISTON_POS')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.piston_pos.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+
+    <div class="spalte">
+        <mat-label class="descriptor">CURING</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('CURING_ON')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('CURING_ON')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.piston_pos.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Curing Time Setpoint</mat-label>
+            <input matInput type="text" [(ngModel)]="curing_time_sp">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_number_value('CURING_TIME_SP', curing_time_sp)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Curing Time Left</mat-label>
+            <input matInput type="text" [(ngModel)]="serial_data.curing_time_left.value">      
+        </mat-form-field>
+       
+    </div>
+    <div class="spalte">
+        <mat-label class="descriptor">VACUUM</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('VACUUM_ON')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('VACUUM_ON')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.vacuum_on.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+    <label> PID values:</label>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>P (current: {{this.serial_data.pid_data.p.value}})</mat-label>
+            <input matInput type="text" [(ngModel)]="pid_p">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_pid_value('P', pid_p)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>I (current: {{this.serial_data.pid_data.i.value}})</mat-label>
+            <input matInput type="text" [(ngModel)]="pid_i">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_pid_value('I', pid_p)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>D (current: {{this.serial_data.pid_data.d.value}})</mat-label>
+            <input matInput type="text" [(ngModel)]="pid_d">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_pid_value('D', pid_d)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Time (current: {{this.serial_data.pid_data.time.value}})</mat-label>
+            <input matInput type="text" [(ngModel)]="pid_time">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_pid_value('I', pid_time)">Set</button>
+    </div>
+
+
+</div>

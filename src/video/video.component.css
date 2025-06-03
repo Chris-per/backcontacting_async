@@ -1,0 +1,65 @@
+.camera-view {
+    display: flex;
+padding: 10px;
+
+}
+
+.dobot-joystick {
+    margin: 2%
+}
+.spalte {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.reihe {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+mat-slider {
+width: 300px;
+}
+
+.mat-button {
+      padding: 0 6px 0 6px;
+  margin: 6px 8px 6px 8px;
+  min-width: 88px;
+  border-radius: 3px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: 5px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.bt_red{
+  border-style: solid;
+  border-color: red;
+}
+
+.bt_green{
+  border-style: solid;
+  border-color: green;
+}
+
+.bt_yellow{
+  border-style: solid;
+  border-color: yellow;
+}
+
+.camera-box-element {
+    width: 500px;
+    height: 540px;
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.12),
+    0px 1px 2px 0px rgba(0,0,0,0.24);
+    overflow: auto;
+    
+  }

@@ -1,0 +1,30 @@
+<!-- <div class="camera-view"> -->
+<div class="camera-box-element">
+    <div class="reihe">
+        
+        <div class="video-screen ">
+            <canvas #imageView width="480" height="480" max-width="480" max-height="480"></canvas>
+        </div>
+        <div class="row">
+            @for (btn of interface_actions; track $index) 
+            {
+                @if(btn.selected == true)
+                {
+                    <button class="mat-button"
+                    mat-raised-button color="primary"  (mousedown)="btn.action()" (mouseup)="btn.action_up()" style="border-color: green;">
+                    {{btn.description}}
+                    </button>  
+                }
+                @else 
+                {
+                    <button class="mat-button"
+                    mat-raised-button color="primary"  (mousedown)="btn.action()" (mouseup)="btn.action_up()">
+                    {{btn.description}}
+                    </button>  
+                }
+                
+            }
+                  
+        </div>
+    </div>
+</div>
