@@ -21,7 +21,7 @@ import { CommunicationService } from '../communication.service';
   styleUrl: './dobot-move.component.css'
 })
 export class DobotMoveComponent {
-
+  way: number = 10;
   constructor(
       protected communication: CommunicationService,
   
@@ -31,8 +31,12 @@ export class DobotMoveComponent {
     
   move_jog(axis:string, direction:string) {
     console.log("jog: "+axis+direction)
-    let request = '{"REQUEST":{"DOBOT":{"JOG":"'+axis+direction+'"}}}'
+    let request = '{"REQUEST":{"DOBOT":{"JOG":"'+axis+direction+'","DATA":{"WAY":'+this.way+'}}}}'
     this.communication.send_request(request)
+  }
+  set_way(way: number)
+  {
+    this.way = way
   }
   stop_jog() {
     console.log("stop jog")

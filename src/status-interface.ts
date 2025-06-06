@@ -8,7 +8,8 @@ export interface statusData {
     serial: serialData,
     pcb_list: ItemInterface,
     window_list: ItemInterface,
-    message: string
+    message: string,
+    state_machine: number
 }
 
 export interface heaterData {
@@ -81,7 +82,8 @@ export function initStatusData(): statusData {
         serial: initSerial(),
         pcb_list: pcb_list,
         window_list: window_list,
-        message: ""
+        message: "",
+        state_machine : 0
     }
     return status
 }

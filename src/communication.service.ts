@@ -147,6 +147,20 @@ export class CommunicationService {
       {
         console.log("Error in communication service: Serial to interface: "+(error))
       }
+      try
+      {
+        if("STATE_MACHINE" in data){
+          if("STATE" in data.STATE_MACHINE)
+          {
+            status.state_machine = data.STATE_MACHINE.STATE
+          }
+        }
+
+      }
+      catch( error)
+      {
+        console.log("Error in communication service: Serial to interface: "+(error))
+      }
     }
     status.serial = serial
     status.dobot = dobot

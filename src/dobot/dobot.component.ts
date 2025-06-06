@@ -26,6 +26,7 @@ export class DobotComponent {
 
     ) {
       console.log("init dobot component done")
+      this.status = initStatusData();
       this.dobot_status = initDobotData();
       console.log("After_init dobot component done")
     this.status_subscription = this.communication.openDataStream().subscribe(

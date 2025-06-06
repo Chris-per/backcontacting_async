@@ -63,4 +63,18 @@
               <mat-icon aria-hidden="false" fontIcon="arrow_forward" style="align-items: center;"></mat-icon>
       </button></div>
   </div>
+  <div class="way-container">
+    <button class="way-button"
+      mat-raised-button color="primary"
+      (mousedown)="set_way(0.1)"> 0.1mm </button> 
+    <button class="way-button"
+      mat-raised-button color="primary"
+      (mousedown)="set_way(1)"> 1mm </button> 
+    <button class="way-button"
+      mat-raised-button color="primary"
+      (mousedown)="set_way(5)"> 5mm </button> 
+    <button class="way-button"
+      mat-raised-button color="primary"
+      (mousedown)="set_way(10)"> 10mm </button> 
+  </div>
 </div>
