@@ -1,0 +1,265 @@
+{
+    "MODBUS": {
+        "BAUD": 115200,
+        "PORT": "ttyUSB0",
+        "ADDRESS": 1,
+        "REG": {
+            "INPUT": {
+                "HEATER_TEMP": 10,
+                "PISTON_POS": 11,
+                "CURING_TIME_LEFT": 14,
+                "DISPENSER_PRESSURE": 15,
+                "VACUUM_ON": 16,
+                "PART_PRESENT": 17,
+                "HEATER_PWM": 18
+            },
+            "OUTPUT": {
+                "HEATER_ON": 13,
+                "HEATER_SP": 31,
+                "CURING_TIME_SP": 32,
+                "DISPENSER_SP": 33,
+                "LIGHT_PWM": 34,
+                "PISTON": 35,
+                "PISTON_POS": 35,
+                "VACUUM": 36,
+                "VACUUM_ON": 36,
+                "BLOWOFF": 37,
+                "P": 39,
+                "I": 40,
+                "D": 41,
+                "TIME": 42
+            },
+            "PID": {
+                "P": 39,
+                "I": 40,
+                "D": 41,
+                "TIME": 42
+            }
+        }
+    },
+    "MAIN_COROUTINE_TIME": 0.2,
+    "MAIN_SOCKET_TIME": 0.2,
+    "POSITION_BOTTOM_UP": {
+        "COMMENT": "coordinates seen from Bottom Up cam",
+        "HEATER": {
+            "X": 80,
+            "Y": 210,
+            "Z": 104
+        },
+        "GRIPPER": {
+            "X": 84,
+            "Y": 251,
+            "Z": 0
+        },
+        "CAM": {
+            "X": 130,
+            "Y": 224,
+            "Z": 47
+        }
+    },
+    "GRIPPER_OFFSET": {
+        "Z_PLANE": 50,
+        "Z_PICKUP": 2,
+        "R_MM": 0,
+        "A_DEG": 0
+    },
+    "GRIPPER_IN_DISPENSER_CAM": {
+        "COMMENT": "Position for Robot when gripped opjects should be detected from bottom up",
+        "X": 84.4,
+        "Y": 250.3,
+        "Z": 183,
+        "Old": {
+            "X": 84.7,
+            "Y": 251.1,
+            "Z": 183
+        }
+    },
+    "POSITION_MOBILE": {
+        "COMMENT": "coordinates seen from mobile cam",
+        "DISPENSER_CAM": {
+            "X": 128,
+            "Y": 225,
+            "Z": 40
+        },
+        "DISPENSER": {
+            "X": 60,
+            "Y": 244,
+            "Z": 20
+        }
+    },
+    "UEYE": {
+        "PX_PER_MM_X": 0.081,
+        "PX_PER_MM_Y": 0.081,
+        "PX_PER_MM_X_OLD": 0.083,
+        "PX_PER_MM_Y_OLD": 0.081,
+        "BOTTOM_UP_CORRECTION": 2.0,
+        "PX_PER_MM_X_DISP": 0.035,
+        "PX_PER_MM_Y_DISP": 0.035,
+        "PX_X": 480,
+        "PX_Y": 480,
+        "DIST_TO_GRIPPER": 51.635073080817456,
+        "ANGLE_TO_GRIPPER": 6.487035423637566,
+        "DIST_TO_GRIPPER_OLD": 51.1,
+        "ANGLE_TO_GRIPPER_OLD": 6.8,
+        "Z_PLANE": 60,
+        "DETECTION_SETTINGS": {
+            "MAX_AREA": 800,
+            "MIN_AREA": 500,
+            "MAX_CORNERS": 18,
+            "MIN_CORNERS": 10,
+            "GRAYSCALE": 80,
+            "SMOOTHING": 2.0
+        },
+        "DETECTION_SETTINGS_CALIB_PCB": {
+            "MAX_AREA": 10000,
+            "MIN_AREA": 3000,
+            "MAX_CORNERS": 12,
+            "MIN_CORNERS": 4,
+            "GRAYSCALE": 100,
+            "SMOOTHING": 5.0
+        },
+        "DETECTION_SETTINGS_PCB": {
+            "MAX_AREA": 10000,
+            "MIN_AREA": 3000,
+            "MAX_CORNERS": 12,
+            "MIN_CORNERS": 3,
+            "GRAYSCALE": 120,
+            "SMOOTHING": 2.0
+        },
+        "DETECTION_SETTINGS_PCB_BOTTOM_UP": {
+            "MAX_AREA": 30000,
+            "MIN_AREA": 8000,
+            "MAX_CORNERS": 19,
+            "MIN_CORNERS": 3,
+            "GRAYSCALE": 10,
+            "SMOOTHING": 2.0
+        },
+        "DETECTION_SETTINGS_DUAL_FIDS": {
+            "MAX_AREA": 800,
+            "MIN_AREA": 300,
+            "MAX_CORNERS": 18,
+            "MIN_CORNERS": 10,
+            "GRAYSCALE": 20,
+            "SMOOTHING": 2.0
+        },
+        "DETECTION_SETTINGS_WINDOW": {
+            "MAX_AREA": 4000,
+            "MIN_AREA": 2000,
+            "MAX_CORNERS": 5,
+            "MIN_CORNERS": 4,
+            "GRAYSCALE": 150,
+            "SMOOTHING": 10.0
+        }
+    },
+    "PCB_LIST": [],
+    "WINDOW_LIST": [
+        {
+            "x": 291.257944559084,
+            "y": 203.15835392828313,
+            "a": -1.1574510830412668,
+            "DATE": "2026-01-08 11:13:25",
+            "ID": 2470
+        },
+        {
+            "x": 291.0022850511787,
+            "y": 201.63216864732217,
+            "a": -1.8024096327600556,
+            "DATE": "2026-01-08 11:20:44",
+            "ID": 3590
+        },
+        {
+            "x": 222.31065557275238,
+            "y": 154.44851285233543,
+            "a": -0.6365150100283555,
+            "DATE": "2026-01-08 13:48:49",
+            "ID": 726
+        },
+        {
+            "x": 222.07414901508093,
+            "y": 178.1717925760206,
+            "a": -2.5435524271735317,
+            "DATE": "2026-01-08 14:00:34",
+            "ID": 3329
+        }
+    ],
+    "DUAL_FIDS_LIST": [],
+    "ROBOT": {
+        "LIMITS": {
+            "J4_POS_DEG": 300,
+            "J4_NEG_DEG": -300
+        },
+        "FIDUCIAL_OFFSET_DEG": 36,
+        "SPEED": 30
+    },
+    "CURRENT_PCB_OFFSET": {
+        "X": 0.5937902608745751,
+        "Y": 0.27374828965768067,
+        "A": 0.16103218126623986
+    },
+    "DISPENSING": {
+        "Z_PLANE": 23.7,
+        "SIZE_X": 5.5,
+        "SIZE_Y": 4.5,
+        "X": 6.2,
+        "Y": 253.7,
+        "PRESSURE": 400,
+        "SPEED": 1,
+        "LOOPS": 2,
+        "DWELL_TIME": 0.7
+    },
+    "MODULE_ORIGIN": {
+        "X": 242,
+        "Y": 119,
+        "Z": 110
+    },
+    "CALIBRATION": {
+        "X": 10,
+        "Y": 263,
+        "Z": 60
+    },
+    "PCB_DETECTION": {
+        "X": 190,
+        "Y": 223,
+        "Z": 110
+    },
+    "PLACING": {
+        "Z_PLANE": 110,
+        "SPEED": 1.5,
+        "Z_PLACE": 48,
+        "OFFSET": {
+            "X": -0.0,
+            "Y": -0.0
+        }
+    },
+    "HEATER": {
+        "Z_PLACE": 50,
+        "SPEED": 1.5,
+        "DIST_TO_GRIPPER": 41.0,
+        "ANGLE_TO_GRIPPER": -15
+    },
+    "CURING": {
+        "TIME": 10,
+        "TEMP": 150
+    },
+    "LAST_PLACING": {
+        "X": 241.93569238212783,
+        "Y": 135.2175282705141,
+        "Z": 110,
+        "A": 2.5896664252256185
+    },
+    "PICKUP_SPEED": 1,
+    "PICKUP_OFFSET": {
+        "COMMENT": "set to Zero - for debugging only",
+        "INFO": " x1y1 Q4; x-1y1 Q3; x1.5y-1.5 Q1; x-2.5y-1.5 Q2",
+        "X": 0,
+        "Y": 0,
+        "A": 0
+    },
+    "PICKUP_DWELL_TIME": 0.5,
+    "CALIBRATION_POINT": {
+        "X": -40.6,
+        "Y": 259.0,
+        "Z": 60,
+        "INFO": "The point where the robot picks up the calibration pcb. This is the point where you have to move the gripper to touch the center of the pcb"
+    }
+}

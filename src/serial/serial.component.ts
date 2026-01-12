@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+
 @Component({
   selector: 'app-serial',
   imports: [
@@ -36,6 +37,7 @@ pid_p!: number;
 pid_i!: number;
 pid_d!: number;
 pid_time!: number;
+dispensing_sp !: number;
 
   constructor(
     protected communication: CommunicationService,
@@ -45,13 +47,15 @@ pid_time!: number;
       this.serial_data = initSerial();
       this.curing_time_sp = 60;
       this.curing_temp_sp = 150;
-      this.pid_p = 8;
-      this.pid_i = 9;
-      this.pid_d = 10;
-      this.pid_time = 11;
+      this.pid_p = 400;
+      this.pid_i = 1;
+      this.pid_d = 0;
+      this.pid_time = 10;
+      this.dispensing_sp = 0;
+      
   }
 
-
+  
 
   ngAfterViewInit(): void {
          
@@ -65,22 +69,25 @@ pid_time!: number;
   }
 
   set_boolean_value(item:string): void {
+    this.communication.set_boolean_value(item)
+  }
     
-    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":true}}}'
-    this.communication.send_request(msg)
-  }
   clear_boolean_value(item:string): void {
-    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":false}}}'
-    this.communication.send_request(msg)
+    this.communication.clear_boolean_value(item)
   }
+  
   set_number_value(item:string, value: number): void {
-    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":'+value+'}}}'
-    this.communication.send_request(msg)
-  }
+    this.communication.set_number_value(item, value)
+  } 
+   
   set_pid_value(item:string, value: number): void {
-    var msg = '{"REQUEST":{"SERIAL":{"PID":{"'+item+'":'+value+'}}}}'
-    this.communication.send_request(msg)
+    this.communication.set_pid_value(item, value)
   }
+ 
+  set_curing_time(value: number): void {
+    this.communication.set_curing_time(value)
+  }
+    
 
 
 }

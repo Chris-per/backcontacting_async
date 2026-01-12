@@ -1,19 +1,15 @@
+<nav class="topnav">
+    <a routerLink="/dobot" routerLinkActive="active">Dobot</a>
+    <a routerLink="/heater" routerLinkActive="active">Heater</a>
+    <a routerLink="/config" routerLinkActive="active">Config</a>
+</nav>
 <div class="flex-container">
     <div class="reihe">
-        <h1>Back Contacting Interface</h1>
         
         <div class="spalte">
-            <app-dobot></app-dobot>
-            
+            <router-outlet></router-outlet>
         </div>
-        
-        
-        
     </div>
-    <div class="right">
-        <app-serial></app-serial>
-    </div>
-    
 </div>
 
 

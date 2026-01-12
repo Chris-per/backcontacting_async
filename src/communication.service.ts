@@ -4,6 +4,7 @@ import { filter, map, Observable, share } from 'rxjs';
 import { cameraData, dobotData, initCameraData, initDobotData, initStatusData, statusData} from './status-interface';
 import { PidData, serialData, initSerial, initPID } from './io-data';
 import { ItemInterface, DetectionItem, init_ItemInterface, init_DetectionItem } from './item-interface';
+import { BehaviorSubject, interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { ItemInterface, DetectionItem, init_ItemInterface, init_DetectionItem } 
 export class CommunicationService {
 
   ws!: WebSocket
+  status: statusData = initStatusData();
 
   constructor(private http: HttpClient) { }
 
@@ -33,10 +35,19 @@ export class CommunicationService {
     }
     if("STATUS" in data)
     {
+      
       if("MESSAGE" in data)
       {
         if(data.MESSAGE != "") console.log(data.MESSAGE)
         status.message = data.MESSAGE;
+      }
+      if("DATA" in data)
+      {
+        status.data = data.DATA
+      }
+      if("CURING_TIME_LEFT" in data.STATUS)
+      {
+        serial.curing_time_left.value  = data.STATUS.CURING_TIME_LEFT
       }
       if("DOBOT" in data.STATUS)
       {
@@ -125,7 +136,7 @@ export class CommunicationService {
           if("HEATER_ON" in data.STATUS.SERIAL) serial.heater_on.value  = data.STATUS.SERIAL.HEATER_ON
           if("CURING_ON" in data.STATUS.SERIAL) serial.curing_on.value  = data.STATUS.SERIAL.CURING_ON
           if("CURING_TIME_SP" in data.STATUS.SERIAL) serial.curing_time_sp.value  = data.STATUS.SERIAL.CURING_TIME_SP
-          if("CURING_TIME_LEFT" in data.STATUS.SERIAL) serial.curing_time_left.value  = data.STATUS.SERIAL.CURING_TIME_LEFT
+          
           if("HEATER_ON" in data.STATUS.SERIAL) serial.heater_on.value  = data.STATUS.SERIAL.HEATER_ON
           if("PID" in data.STATUS.SERIAL)
           {
@@ -154,6 +165,10 @@ export class CommunicationService {
           {
             status.state_machine = data.STATE_MACHINE.STATE
           }
+          if("SEQUENCE_STATE" in data.STATE_MACHINE)
+          {
+            status.state_sequence = data.STATE_MACHINE.SEQUENCE_STATE
+          }
         }
 
       }
@@ -167,6 +182,7 @@ export class CommunicationService {
     status.camera = camera
     status.pcb_list = pcb_list
     status.window_list = window_list
+    this.status = status
     return status
   }
 
@@ -226,6 +242,48 @@ export class CommunicationService {
   {
     console.log("sending request: "+request)
     this.ws.send(request)
+  }
+
+  public set_boolean_value(item:string): void {
+    
+    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":true}}}'
+    this.send_request(msg)
+  }
+  public clear_boolean_value(item:string): void {
+    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":false}}}'
+    this.send_request(msg)
+  }
+  public set_number_value(item:string, value: number): void {
+    var msg = '{"REQUEST":{"SERIAL":{"'+item+'":'+value+'}}}'
+    this.send_request(msg)
+  }
+  public set_pid_value(item:string, value: number): void {
+    var msg = '{"REQUEST":{"SERIAL":{"PID":{"'+item+'":'+value+'}}}}'
+    this.send_request(msg)
+  }
+
+  public set_curing_time(value: number): void {
+    let request = '{"REQUEST":{"CAMERA":{"TYPE":"SET_CURING_TIME"}},"VALUE":'+value+'}'
+    this.send_request(request)
+  }
+
+  public request_config(): Observable<any> {
+    this.status.data = {};
+    this.send_request('{"REQUEST":{"CONFIG":{"TYPE":"GET"}}}');
+
+    // Poll every 100ms until status.data is not empty
+    return interval(100).pipe(
+      filter(() => Object.keys(this.status.data).length > 0),
+      map(() => this.status.data),
+      share(),
+      // Complete after first emission
+      filter((_, idx) => idx === 0)
+    );
+  }
+
+  public set_config(config_data: any): void {
+    let request = '{"REQUEST":{"CONFIG":{"TYPE":"SET","DATA":'+JSON.stringify(config_data)+'}}}'
+    this.send_request(request)
   }
 }
 

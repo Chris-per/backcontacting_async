@@ -1,0 +1,27 @@
+<div class="reihe">
+    <div class="spalte">
+        <mat-label class="descriptor">VACUUM</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('VACUUM_ON')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('VACUUM_ON')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.vacuum_on.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+    <div class="spalte">
+        <mat-label class="descriptor">Heater</mat-label>
+        <button mat-button class="std on" (click)="set_boolean_value('HEATER_ON')">On</button>
+        <button mat-button class="std on" (click)="clear_boolean_value('HEATER_ON')">Off</button>
+        <span class="indicator" [ngClass]=" (serial_data.heater_on.value ? 'indicator-on': 'indicator-off') "></span>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Temperature Setpoint</mat-label>
+            <input matInput type="text" [(ngModel)]="curing_temp_sp">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_number_value('HEATER_SP', curing_temp_sp)">Set</button>
+    </div>
+    <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Temperature </mat-label>
+            <input matInput type="text" [(ngModel)]="serial_data.heater_temp.value">      
+        </mat-form-field>
+    </div>
+</div>

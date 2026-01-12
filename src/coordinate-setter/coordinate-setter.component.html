@@ -1,0 +1,26 @@
+<div class="coordinate-setter">
+    <div class="reihe">
+        <div class="spalte">
+            <div class="label-header">
+                <label>
+                    {{label}}
+                </label>
+            </div>
+        </div>
+        <div class="spalte">
+            <mat-form-field appearance="outline" class="coord-field">
+                <mat-label>X: {{coordinates.X}}</mat-label>
+                <input matInput type="number" [(ngModel)]="coordinates.X" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="coord-field">
+                <mat-label>Y: {{coordinates.Y}}</mat-label>
+                <input matInput type="number" [(ngModel)]="coordinates.Y" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="coord-field">
+                <mat-label>Z: {{coordinates.Z}}</mat-label>
+                <input matInput type="number" [(ngModel)]="coordinates.Z" />
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="setCoordinates()">Set</button>
+        </div>
+    </div>
+</div> 

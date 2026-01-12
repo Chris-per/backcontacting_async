@@ -1,0 +1,29 @@
+.spalte {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.reihe {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.indicator {
+    width: 16px;
+    height: 16px;
+    
+    background-color: red;
+    transition: background-color 400ms ease-in-out;
+    display: inline-block 
+    
+    }
+    
+.indicator-on {
+    background-color: rgb(49, 219, 49);
+}
+
+.indicator-off {
+    background-color: rgb(240, 52, 52);
+} 

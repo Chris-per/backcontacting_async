@@ -10,12 +10,12 @@
             <mat-label>Temperature Setpoint</mat-label>
             <input matInput type="text" [(ngModel)]="curing_temp_sp">      
         </mat-form-field>
-        <button mat-button class="std on" (click)="set_number_value('CURING_TIME_SP', curing_time_sp)">Set</button>
+        <button mat-button class="std on" (click)="set_number_value('HEATER_SP', curing_temp_sp)">Set</button>
     </div>
     <div class="spalte">
         <mat-form-field class="example-form-field">
             <mat-label>Temperature </mat-label>
-            <input matInput type="text" [(ngModel)]="curing_temp_sp">      
+            <input matInput type="text" [(ngModel)]="serial_data.heater_temp.value">      
         </mat-form-field>
     </div>
     <div class="spalte">
@@ -36,7 +36,7 @@
             <mat-label>Curing Time Setpoint</mat-label>
             <input matInput type="text" [(ngModel)]="curing_time_sp">      
         </mat-form-field>
-        <button mat-button class="std on" (click)="set_number_value('CURING_TIME_SP', curing_time_sp)">Set</button>
+        <button mat-button class="std on" (click)="set_curing_time(curing_time_sp)">Set</button>
     </div>
     <div class="spalte">
         <mat-form-field class="example-form-field">
@@ -54,32 +54,39 @@
     <label> PID values:</label>
     <div class="spalte">
         <mat-form-field class="example-form-field">
-            <mat-label>P (current: {{this.serial_data.pid_data.p.value}})</mat-label>
+            <mat-label>P</mat-label>
             <input matInput type="text" [(ngModel)]="pid_p">      
         </mat-form-field>
-        <button mat-button class="std on" (click)="set_pid_value('P', pid_p)">Set</button>
+        <button mat-button class="std on" (click)="set_number_value('P', pid_p)">Set</button>
     </div>
     <div class="spalte">
         <mat-form-field class="example-form-field">
-            <mat-label>I (current: {{this.serial_data.pid_data.i.value}})</mat-label>
+            <mat-label>I</mat-label>
             <input matInput type="text" [(ngModel)]="pid_i">      
         </mat-form-field>
-        <button mat-button class="std on" (click)="set_pid_value('I', pid_p)">Set</button>
+        <button mat-button class="std on" (click)="set_number_value('I', pid_p)">Set</button>
     </div>
     <div class="spalte">
         <mat-form-field class="example-form-field">
-            <mat-label>D (current: {{this.serial_data.pid_data.d.value}})</mat-label>
+            <mat-label>D</mat-label>
             <input matInput type="text" [(ngModel)]="pid_d">      
         </mat-form-field>
-        <button mat-button class="std on" (click)="set_pid_value('D', pid_d)">Set</button>
+        <button mat-button class="std on" (click)="set_number_value('D', pid_d)">Set</button>
     </div>
     <div class="spalte">
         <mat-form-field class="example-form-field">
-            <mat-label>Time (current: {{this.serial_data.pid_data.time.value}})</mat-label>
+            <mat-label>Time</mat-label>
             <input matInput type="text" [(ngModel)]="pid_time">      
         </mat-form-field>
         <button mat-button class="std on" (click)="set_pid_value('I', pid_time)">Set</button>
     </div>
-
+    <label>Dispensing</label>
+        <div class="spalte">
+        <mat-form-field class="example-form-field">
+            <mat-label>Dispenser Setpoint</mat-label>
+            <input matInput type="number" [(ngModel)]="dispensing_sp">      
+        </mat-form-field>
+        <button mat-button class="std on" (click)="set_number_value('DISPENSER_SP', dispensing_sp)">Set</button>
+    </div>
 
 </div>

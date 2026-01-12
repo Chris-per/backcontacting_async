@@ -1,0 +1,32 @@
+.detection-settings {
+    background-color: #e3f2fd; /* Light blue */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px ;
+}
+
+.reihe {
+    display: flex;
+    align-items: flex-start;
+}
+
+.spalte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.spalte:first-child {
+    margin-right: 40px; /* Increase distance between label and inputs */
+}
+
+.coord-field {
+    margin-bottom: 12px;
+    min-width: 120px;
+}
+
+.label-header {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}

@@ -1,0 +1,38 @@
+<div class="detection-settings">
+    <div class="spalte">
+            <div class="label-header">
+                <label>
+                    {{label}}
+                </label>
+            </div>
+        </div>
+  <form>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>MAX_AREA: {{settings.MAX_AREA}}</mat-label>
+      <input matInput type="number" [value]="settings.MAX_AREA" (input)="onValueChange('MAX_AREA', $any($event.target).value)">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>MIN_AREA: {{settings.MIN_AREA}}</mat-label>
+      <input matInput type="number" [value]="settings.MIN_AREA" (input)="onValueChange('MIN_AREA', $any($event.target).value)">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>MAX_CORNERS: {{settings.MAX_CORNERS}}</mat-label>
+      <input matInput type="number" [value]="settings.MAX_CORNERS" (input)="onValueChange('MAX_CORNERS', $any($event.target).value)">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>MIN_CORNERS: {{settings.MIN_CORNERS}}</mat-label>
+      <input matInput type="number" [value]="settings.MIN_CORNERS" (input)="onValueChange('MIN_CORNERS', $any($event.target).value)">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>GRAYSCALE: {{settings.GRAYSCALE}}</mat-label>
+      <input matInput type="number" [value]="settings.GRAYSCALE" (input)="onValueChange('GRAYSCALE', $any($event.target).value)">
+    </mat-form-field>
+    <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;" class="coord-field">
+      <mat-label>SMOOTHING: {{settings.SMOOTHING}}</mat-label>
+      <input matInput type="number" step="0.1" [value]="settings.SMOOTHING" (input)="onValueChange('SMOOTHING', $any($event.target).value)">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="button" (click)="settingsChange.emit(settings)">
+      Save Settings
+    </button>
+  </form>
+</div>

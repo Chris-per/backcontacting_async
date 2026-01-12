@@ -1,0 +1,106 @@
+<p>configuration</p>
+<div>
+    <button (click)="requestConfig()">Request Config</button>
+</div>
+<div *ngIf="loading">Loading configuration...</div>
+<div *ngIf="!loading">
+    <!-- ...existing configuration display code... -->
+     <div class="spalte">
+        <div class = "reihe">
+            <app-coordinate-setter 
+            [label]="'CALIBRATION'" 
+            [coordinates]="{
+                label: 'CALIBRATION',
+                X: remote_config?.CALIBRATION?.X ?? 0,
+                Y: remote_config?.CALIBRATION?.Y ?? 0,
+                Z: remote_config?.CALIBRATION?.Z ?? 0,
+            }"
+            (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
+        </div>
+        <div class = "reihe">
+            <app-coordinate-setter 
+            [label]="'MODULE_ORIGIN'" 
+            [coordinates]="{
+                label: 'MODULE_ORIGIN',
+                X: remote_config?.MODULE_ORIGIN?.X ?? 0,
+                Y: remote_config?.MODULE_ORIGIN?.Y ?? 0,
+                Z: remote_config?.MODULE_ORIGIN?.Z ?? 0,
+            }"
+            (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
+        </div>
+         <div class = "reihe">
+            <app-coordinate-setter 
+            [label]="'PCB_DETECTION'" 
+            [coordinates]="{
+                label: 'PCB_DETECTION',
+                X: remote_config?.PCB_DETECTION?.X ?? 0,
+                Y: remote_config?.PCB_DETECTION?.Y ?? 0,
+                Z: remote_config?.PCB_DETECTION?.Z ?? 0,
+            }"
+            (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
+        </div>
+     </div>
+     <div class="spalte">
+        <div class = "reihe">
+            <app-detection-settings-setter
+            [label] = "'DETECTION_SETTINGS_PCB'"
+            [settings]="remote_config?.UEYE?.DETECTION_SETTINGS_PCB ?? {
+                MAX_AREA: 0,
+                MIN_AREA: 0,
+                MAX_CORNERS: 0,
+                MIN_CORNERS: 0,
+                GRAYSCALE: 0,
+                SMOOTHING: 0
+            }"
+            (settingsChange)="onDetectionSettingsChanged($event)">
+            </app-detection-settings-setter>
+        </div>
+        <div class = "reihe">
+            <app-detection-settings-setter
+            [label] = "'DETECTION_SETTINGS_PCB_BOTTOM_UP'"
+            [settings]="remote_config?.UEYE?.DETECTION_SETTINGS_PCB_BOTTOM_UP ?? {
+                MAX_AREA: 0,
+                MIN_AREA: 0,
+                MAX_CORNERS: 0,
+                MIN_CORNERS: 0,
+                GRAYSCALE: 0,
+                SMOOTHING: 0
+            }"
+            (settingsChange)="onDetectionSettingsChanged($event)">
+            </app-detection-settings-setter>
+        </div>
+        <div class = "reihe">
+            <app-detection-settings-setter
+            [label] = "'DETECTION_SETTINGS_WINDOW'"
+            [settings]="remote_config?.UEYE?.DETECTION_SETTINGS_WINDOW ?? {
+                MAX_AREA: 0,
+                MIN_AREA: 0,
+                MAX_CORNERS: 0,
+                MIN_CORNERS: 0,
+                GRAYSCALE: 0,
+                SMOOTHING: 0
+            }"
+            (settingsChange)="onDetectionSettingsChanged($event)">
+            </app-detection-settings-setter>
+        </div>
+     </div>
+     <div class="spalte">
+        <div class = "reihe"> 
+            <app-dispensing-settings-setter
+            [label]="'DISPENSING'"
+            [settings]="remote_config?.DISPENSING ?? {
+                Z_PLANE: 0,
+                SIZE_X: 0,
+                SIZE_Y: 0,
+                X: 0,
+                Y: 0,
+                PRESSURE: 0,
+                SPEED: 0,
+                LOOPS: 0,
+                DWELL_TIME: 0
+            }"
+            (settingsChange)="onDispensingSettingsChanged($event)">
+            </app-dispensing-settings-setter>
+        </div>
+     </div>
+</div>

@@ -9,7 +9,9 @@ export interface statusData {
     pcb_list: ItemInterface,
     window_list: ItemInterface,
     message: string,
-    state_machine: number
+    data: any,
+    state_machine: number,
+    state_sequence: number
 }
 
 export interface heaterData {
@@ -83,7 +85,9 @@ export function initStatusData(): statusData {
         pcb_list: pcb_list,
         window_list: window_list,
         message: "",
-        state_machine : 0
+        state_machine : 0,
+        state_sequence: 0,
+        data: {}
     }
     return status
 }
