@@ -8,39 +8,39 @@
     </div>
     <form>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>Z_PLANE</mat-label>
+        <mat-label>Z_PLANE {{settings.Z_PLANE}}</mat-label>
         <input matInput type="number" [value]="settings.Z_PLANE" (input)="onValueChange('Z_PLANE', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>SIZE_X</mat-label>
+        <mat-label>SIZE_X {{settings.SIZE_X}}</mat-label>
         <input matInput type="number" [value]="settings.SIZE_X" (input)="onValueChange('SIZE_X', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>SIZE_Y</mat-label>
+        <mat-label>SIZE_Y {{settings.SIZE_Y}}</mat-label>
         <input matInput type="number" [value]="settings.SIZE_Y" (input)="onValueChange('SIZE_Y', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>X</mat-label>
+        <mat-label>X {{settings.X}}</mat-label>
         <input matInput type="number" [value]="settings.X" (input)="onValueChange('X', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>Y</mat-label>
+        <mat-label>Y {{settings.Y}}</mat-label>
         <input matInput type="number" [value]="settings.Y" (input)="onValueChange('Y', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>PRESSURE</mat-label>
+        <mat-label>PRESSURE {{settings.PRESSURE}}</mat-label>
         <input matInput type="number" [value]="settings.PRESSURE" (input)="onValueChange('PRESSURE', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>SPEED</mat-label>
+        <mat-label>SPEED {{settings.SPEED}}</mat-label>
         <input matInput type="number" [value]="settings.SPEED" (input)="onValueChange('SPEED', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>LOOPS</mat-label>
+        <mat-label>LOOPS {{settings.LOOPS}}</mat-label>
         <input matInput type="number" [value]="settings.LOOPS" (input)="onValueChange('LOOPS', $any($event.target).value)">
     </mat-form-field>
     <mat-form-field appearance="fill" style="display:block; margin-bottom:8px;">
-        <mat-label>DWELL_TIME</mat-label>
+        <mat-label>DWELL_TIME {{settings.DWELL_TIME}}</mat-label>
         <input matInput type="number" step="0.01" [value]="settings.DWELL_TIME" (input)="onValueChange('DWELL_TIME', $any($event.target).value)">
     </mat-form-field>
     <button mat-raised-button color="primary" type="button" (click)="settingsChange.emit(settings)">

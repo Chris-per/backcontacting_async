@@ -12,6 +12,10 @@ import { BehaviorSubject, interval } from 'rxjs';
 export class CommunicationService {
 
   ws!: WebSocket
+  private wsUrl: string = 'ws://192.168.178.209:8080/data_stream';
+  private reconnectInterval: number = 2000; // ms
+  private reconnectAttempts: number = 0;
+  private maxReconnectAttempts: number = 10;
   status: statusData = initStatusData();
 
   constructor(private http: HttpClient) { }
@@ -191,11 +195,17 @@ export class CommunicationService {
 
     if (this._sharedStream == undefined) {
       console.group("creating stream")
-      this.ws = new WebSocket('ws://192.168.178.209:8080/data_stream');
+      this.createWebSocket();
       this._sharedStream = new Observable<MessageEvent<any>>((observer) => {
         this.ws.onmessage = observer.next.bind(observer);
-        this.ws.onerror = observer.error.bind(observer);
-        this.ws.onclose = observer.complete.bind(observer);
+        this.ws.onerror = (err) => {
+          observer.error(err);
+          this.handleReconnect();
+        };
+        this.ws.onclose = (event) => {
+          observer.complete();
+          this.handleReconnect();
+        };
         return this.ws.close.bind(this.ws);
       }).pipe(
         filter(event => {
@@ -231,9 +241,24 @@ export class CommunicationService {
         }),
         share()
       );
-      
     }
     return this._sharedStream;
+  }
+
+  private createWebSocket() {
+    this.ws = new WebSocket(this.wsUrl);
+  }
+
+  private handleReconnect() {
+    if (this.reconnectAttempts < this.maxReconnectAttempts) {
+      this.reconnectAttempts++;
+      setTimeout(() => {
+        console.warn(`WebSocket connection lost. Attempting to reconnect (${this.reconnectAttempts}/${this.maxReconnectAttempts})...`);
+        this.createWebSocket();
+      }, this.reconnectInterval);
+    } else {
+      console.error('Max WebSocket reconnection attempts reached.');
+    }
   }
 
   

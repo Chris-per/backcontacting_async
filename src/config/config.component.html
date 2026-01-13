@@ -39,6 +39,17 @@
             }"
             (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
         </div>
+        <div class = "reihe">
+            <app-coordinate-setter 
+            [label]="'GRIPPER_IN_DISPENSER_CAM'" 
+            [coordinates]="{
+                label: 'GRIPPER_IN_DISPENSER_CAM',
+                X: remote_config?.GRIPPER_IN_DISPENSER_CAM?.X ?? 0,
+                Y: remote_config?.GRIPPER_IN_DISPENSER_CAM?.Y ?? 0,
+                Z: remote_config?.GRIPPER_IN_DISPENSER_CAM?.Z ?? 0,
+            }"
+            (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
+        </div>
      </div>
      <div class="spalte">
         <div class = "reihe">

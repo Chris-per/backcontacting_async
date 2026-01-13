@@ -27,10 +27,12 @@ export class DispensingSettingsSetterComponent {
   @Output() settingsChange = new EventEmitter<DispensingSettings>();
 
   onValueChange(key: keyof DispensingSettings, value: string | number) {
-    const newSettings: DispensingSettings = {
+    // Update the settings object with the new value
+    this.settings = {
       ...this.settings,
       [key]: Number(value)
     };
-    this.settingsChange.emit(newSettings);
+    // Emit the entire updated settings object
+    this.settingsChange.emit(this.settings);
   }
 }

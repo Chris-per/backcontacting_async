@@ -71,7 +71,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
       }
     };
     this.communication.set_config(data_to_send);
-
     console.log('Calibration coordinates updated:', newCoords);
   }
 
@@ -90,7 +89,6 @@ export class ConfigComponent implements OnInit, OnDestroy {
       }}
     };
     this.communication.set_config(data_to_send);
-
     console.log('Detection settings updated:', data_to_send);
   }
 

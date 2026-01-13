@@ -53,7 +53,7 @@ export class ActionsComponent {
     type: "move"
     
   };
-  bottom_up_cam: moveTo = {
+  move_bottom_up_cam: moveTo = {
     position: {
       x:200,
       y: 10,
@@ -63,7 +63,9 @@ export class ActionsComponent {
     status: 0,
     description: "Move to BU Cam",
     action: ()=>{ console.log("bt move bu cam pressed")},
-    action_up: ()=>{ console.log("bt move bu cam pressed released")},
+    action_up: ()=>{ console.log("bt move bu cam pressed released");
+      this.request_move_bottom_up_cam()
+    },
     type: "move"
     
   };
@@ -76,6 +78,17 @@ export class ActionsComponent {
     },
     action_up: ()=>{ },
     description: "PCB Detection",
+    type: "fiducial"
+  };
+  pcb_up_detection : pcbDetection = {
+    status: 0,
+    action: ()=>{ 
+      console.log("bt PCB UP Detection pressed");
+      
+      this.request_pcb_up_detection()
+    },
+    action_up: ()=>{ },
+    description: "PCB UP Detection",
     type: "fiducial"
   };
   window_detection : pcbDetection = {
@@ -179,6 +192,16 @@ export class ActionsComponent {
     description: "calibrate Cam",
     type: "fiducial"
   };
+  detect_center_of_rotation : pcbDetection = {
+    status: 0,
+    action: ()=>{ 
+      console.log("bt calibrate_center_of_rotation pressed");
+      this.request_calibrate_center_of_rotation()
+    },
+    action_up: ()=>{ },
+    description: "calibrate COR",
+    type: "fiducial"
+  };
   emergency_stop : pcbDetection = {
     status: 0,
     action: ()=>{ 
@@ -211,10 +234,11 @@ export class ActionsComponent {
   }
   interface_actions =  [
       this.home,
-      this.bottom_up_cam,
+      this.move_bottom_up_cam,
       this.move_to_calibration_point,
       this.move_to_module_origin,
       this.pcb_detection,
+      this.pcb_up_detection,
       this.window_detection,
       this.pcb_pickup,
       this.pcb_align,
@@ -225,6 +249,7 @@ export class ActionsComponent {
       this.clear_dobot_error,
       this.enable_dobot,
       this.calibrate_camera,
+      this.detect_center_of_rotation,
       this.emergency_stop,
       
   ]
@@ -258,6 +283,13 @@ export class ActionsComponent {
             this.pcb_pickup.status = 0
           }
           if( this.status.message == "MOVE_HOME_FINISHED")
+          {
+            console.log("got a message back")
+            this.home.status = 0
+            this.move_to_calibration_point.status = 0
+            this.move_to_module_origin.status = 0
+          }
+          if( this.status.message == "MOVE_BOTTOM_UP_CAM_FINISHED")
           {
             console.log("got a message back")
             this.home.status = 0
@@ -327,8 +359,28 @@ export class ActionsComponent {
             console.log("got a message back")
             this.emergency_stop.status = 0
           }
-          
-          
+          if( this.status.message == "BOTTOM_UP_DETECT_CENTER_OF_ROTATION_FINISHED")
+          {
+            console.log("got a message back")
+            this.detect_center_of_rotation.status = 0
+          }
+          if( this.status.message == "BOTTOM_UP_DETECT_CENTER_OF_ROTATION ERROR")
+          {
+            console.log("got a message back")
+            this.detect_center_of_rotation.status = -1
+          }
+          if( this.status.message == "DETECT_PCB_BOTTOM_UP_FINISHED")
+          {
+            console.log("found a PCB bottom up at:")
+            console.log(this.status.data)
+            this.pcb_up_detection.status = 0
+          }
+
+          if( this.status.message == "DETECT_PCB_BOTTOM_UP ERROR")
+          {
+            console.log("got a message back")
+            this.pcb_up_detection.status = -1
+          }
         }
       )
   }
@@ -337,6 +389,14 @@ export class ActionsComponent {
   {
     this.pcb_detection.status = 1
     let request = '{"REQUEST":{"CAMERA":{"TYPE":"PCB_DETECTION"}},"ID":"REQUEST_PCB_DETECTION"}'
+    this.communication.send_request(request)
+
+  }
+
+  request_pcb_up_detection()
+  {
+    this.pcb_up_detection.status = 1
+    let request = '{"REQUEST":{"CAMERA":{"TYPE":"PCB_UP_DETECTION"}},"ID":"REQUEST_PCB_UP_DETECTION"}'
     this.communication.send_request(request)
 
   }
@@ -442,6 +502,20 @@ export class ActionsComponent {
   {
     this.move_to_module_origin.status = 1
     let request = '{"REQUEST":{"CAMERA":{"TYPE":"MODULE_ORIGIN"}},"ID":"REQUEST_MOVE_MODULE_ORIGIN"}'
+    this.communication.send_request(request)
+  }
+
+  request_move_bottom_up_cam()
+  {
+    this.move_bottom_up_cam.status = 1
+    let request = '{"REQUEST":{"CAMERA":{"TYPE":"MOVE_BOTTOM_UP_CAM"}},"ID":"REQUEST_MOVE_BOTTOM_UP_CAM"}'
+    this.communication.send_request(request)
+
+  }
+
+  request_calibrate_center_of_rotation()
+  {
+    let request = '{"REQUEST":{"CAMERA":{"TYPE":"BOTTOM_UP_DETECT_CENTER_OF_ROTATION"}},"ID":"BOTTOM_UP_DETECT_CENTER_OF_ROTATION"}'
     this.communication.send_request(request)
   }
 

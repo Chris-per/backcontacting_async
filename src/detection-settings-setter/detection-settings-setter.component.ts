@@ -37,13 +37,15 @@ export class DetectionSettingsSetterComponent {
   }
 
   onValueChange(key: keyof DetectionSettings, value: string | number) {
-    const newSettings: DetectionSettings = { 
-      ...this.settings, 
-      [key]: Number(value), 
-      label: this.label || this.settings.label || '' 
+    // Update the settings object with the new value
+    this.settings = {
+      ...this.settings,
+      [key]: Number(value),
+      label: this.label || this.settings.label || ''
     };
-    console.log("Updated settings1:", newSettings);
-    console.log("Emitting with label:", newSettings.label);
-    this.settingsChange.emit(newSettings);
-}
+    console.log("Updated settings1:", this.settings);
+    console.log("Emitting with label:", this.settings.label);
+    // Emit the entire updated settings object
+    this.settingsChange.emit(this.settings);
+  }
 }
