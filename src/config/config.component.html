@@ -51,6 +51,32 @@
             (coordinatesChange)="onCalibrationChanged($event)"></app-coordinate-setter>
         </div>
      </div>
+     <div class="spalte">  
+        <div class="reihe">
+            <app-nested-config-setter
+            [label]="'Z_PICKUP'"
+            [config]="remote_config"
+            [paramPath]="'PICKUP.Z_PICKUP'"
+            (configChange)="onNestedConfigChanged($event)">
+            </app-nested-config-setter>
+        </div>
+        <div class="reihe">
+            <app-nested-config-setter
+            [label]="'Z_PLACE'"
+            [config]="remote_config"
+            [paramPath]="'PLACING.Z_PLACE'"
+            (configChange)="onNestedConfigChanged($event)">
+            </app-nested-config-setter>
+        </div>
+        <div class="reihe">
+            <app-nested-config-setter
+            [label]="'HEATER PLACE'"
+            [config]="remote_config"
+            [paramPath]="'HEATER.Z_PLACE'"
+            (configChange)="onNestedConfigChanged($event)">
+            </app-nested-config-setter>
+        </div>
+     </div>
      <div class="spalte">
         <div class = "reihe">
             <app-detection-settings-setter

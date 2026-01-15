@@ -1,0 +1,24 @@
+.nested-config-setter {
+  background-color: #e3f2fd; /* Light blue, matches coordinate-setter */
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 300px;
+}
+
+.nested-config-setter label {
+  font-weight: bold;
+}
+
+.nested-config-setter input {
+  padding: 4px;
+  margin-bottom: 4px;
+}
+
+.nested-config-setter button {
+  align-self: flex-start;
+  padding: 4px 12px;
+}

@@ -1,0 +1,12 @@
+<div class="nested-config-setter">
+  <div class="label-row">
+    <label>{{label}}</label>
+  </div>
+  <div class="value-row">
+    <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-label>{{label}}</mat-label>
+      <input matInput [(ngModel)]="paramValue" type="text" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="setConfig()">Set</button>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+  
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommunicationService } from '../communication.service';
 import { Subscription } from 'rxjs';
@@ -7,6 +8,7 @@ import { statusData } from '../status-interface';
 import { CoordinateSetterComponent } from "../coordinate-setter/coordinate-setter.component";
 import { DetectionSettings, DetectionSettingsSetterComponent } from "../detection-settings-setter/detection-settings-setter.component";
 import { DispensingSettingsSetterComponent } from '../dispensing-settings-setter/dispensing-settings-setter.component';
+import { NestedConfigSetterComponent } from '../nested-config-setter/nested-config-setter.component';
 
 @Component({
   selector: 'app-config',
@@ -15,7 +17,8 @@ import { DispensingSettingsSetterComponent } from '../dispensing-settings-setter
     FormsModule,
     CoordinateSetterComponent,
     DetectionSettingsSetterComponent,
-    DispensingSettingsSetterComponent
+    DispensingSettingsSetterComponent,
+    NestedConfigSetterComponent
 
 ],
   templateUrl: './config.component.html',
@@ -93,11 +96,39 @@ export class ConfigComponent implements OnInit, OnDestroy {
   }
 
   onDispensingSettingsChanged($newSettings: any) {
+    // Update the local config with the new settings
+    this.remote_config.DISPENSING = $newSettings;
+    // Send the entire DISPENSING config, not just the changed part
     let data_to_send = {
-      "DISPENSING": $newSettings
+      "DISPENSING": this.remote_config.DISPENSING
     };
     this.communication.set_config(data_to_send);
+    console.log('Full DISPENSING config sent:', data_to_send);
   }
+
+  onNestedConfigChanged({ paramPath, value }: { paramPath: string, value: any }) {
+  if (paramPath) {
+    const keys = paramPath.split('.');
+    let obj = this.remote_config;
+    for (let i = 0; i < keys.length - 1; i++) {
+      if (!obj[keys[i]]) obj[keys[i]] = {};
+      obj = obj[keys[i]];
+    }
+    obj[keys[keys.length - 1]] = value;
+    // Prepare the minimal update object
+    let updateObj: any = {};
+    let pointer = updateObj;
+    for (let i = 0; i < keys.length - 1; i++) {
+      pointer[keys[i]] = {};
+      pointer = pointer[keys[i]] = {};
+    }
+    pointer[keys[keys.length - 1]] = value;
+    this.communication.set_config(updateObj);
+      // Force a deep clone to trigger change detection
+      this.remote_config = JSON.parse(JSON.stringify(this.remote_config));
+    console.log('Nested config updated:', updateObj);
+  }
+}
 
 
 }

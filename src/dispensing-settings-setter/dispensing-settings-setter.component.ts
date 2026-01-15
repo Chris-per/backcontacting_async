@@ -27,12 +27,15 @@ export class DispensingSettingsSetterComponent {
   @Output() settingsChange = new EventEmitter<DispensingSettings>();
 
   onValueChange(key: keyof DispensingSettings, value: string | number) {
-    // Update the settings object with the new value
+    // Replace comma with dot for decimal separator
+    let processedValue = value;
+    if (typeof value === 'string') {
+      processedValue = value.replace(',', '.');
+    }
     this.settings = {
       ...this.settings,
-      [key]: Number(value)
+      [key]: Number(processedValue)
     };
-    // Emit the entire updated settings object
     this.settingsChange.emit(this.settings);
   }
 }
